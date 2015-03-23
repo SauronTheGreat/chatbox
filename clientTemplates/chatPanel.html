@@ -1,0 +1,78 @@
+<template name="chatBox">
+    <div class="ui-widget ui-corner-top ui-chatbox" outline="0" style="right: 0px;">
+        <div class="ui-widget-header ui-corner-top ui-chatbox-titlebar ui-dialog-header" style="width: 308px;">
+            <span>Runnable User</span>
+            <a href="#" class="ui-corner-all ui-chatbox-icon" role="button">
+                <span class="ui-icon ui-icon-closethick">close</span>
+            </a>
+            <a  id="ui-icon-minusthick" href="#" class="ui-corner-all ui-chatbox-icon" role="button">
+                <span class="ui-icon ui-icon-minusthick">minimize</span>
+            </a>
+        </div>
+        <div class="ui-widget-content ui-chatbox-content">
+            <div id="chat_div" class="ui-widget-content ui-chatbox-log" style="width: 308px;">
+                {{#each userList}}
+                <div class="sidebar-name">
+                    <!-- Pass username and display name to register popup -->
+                    <a href="#" style="text-decoration: none;">
+                        <img width="30" height="30" src="/packages/rushabhhathi_chatbox/libFiles/profilePic.jpg">
+                        <span>{{personal_profile.display_name}}</span>
+                        <span class="label " style="float: right;margin-top: 8px;"><i class="fa fa-circle-o {{labelClass}}"></i></span>
+                    </a>
+                </div>
+
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+<template name="chatBoxOld">
+    <div class="popup-box chat-popup" id="theChatBox{{userId}}" style="display: block;">
+        <div class="popup-head"><div class="popup-head-left">
+            {{userName}} says
+        </div>
+            <div class="popup-head-right">
+                <a style="cursor: pointer;" href="javascript:close_popup('qscutter');">✕</a>
+            </div>
+            <div style="clear: both">
+
+            </div>
+        </div>
+        <div class="popup-messages" id="popup-messages-{{userId}}">
+            <ol class="discussion">
+                {{#each myMessages userId}}
+                <li class="{{myClass}}">
+                    <div class="avatar">
+                        <img src="/packages/rushabhhathi_chatbox/libFiles/profilePic.jpg" />
+                    </div>
+                    <div class="messages">
+                        <p>{{message}}</p>
+                        <time datetime="2009-11-13T20:00">{{countTime time}}</time>
+                    </div>
+                </li>
+                {{/each}}
+                <!--<li class="self">-->
+                <!--<div class="avatar">-->
+                <!--<img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/3/profile/profile-80_20.jpg" />-->
+                <!--</div>-->
+                <!--<div class="messages">-->
+                <!--<p>That makes sense.</p>-->
+                <!--<p>It's a pretty small airport.</p>-->
+                <!--<time datetime="2009-11-13T20:14">37 mins</time>-->
+                <!--</div>-->
+                <!--</li>-->
+            </ol>
+        </div>
+        <div class="sendMessage" style="z-index:999999">
+            <div class="row">
+                <div class="col-lg-9">
+                    <textarea name="" id="" cols="35" rows="1" style="width: 235px;height:30px;"></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input class="hiddenUser" type="hidden" value="{{userId}}"/>
+                    <button class="btn btn-xs btn-info send-message">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

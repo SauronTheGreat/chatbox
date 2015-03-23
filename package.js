@@ -11,8 +11,25 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0.4.2');
-  api.addFiles('chatbox.js');
+    api.versionsFrom('1.0.2.1');
+    var both = ['client', 'server'];
+
+    api.use('coffeescript', both);
+    api.use(['templating'], 'client');
+    api.use('handlebars', 'client');
+    //api.use("UI",'client');
+    api.use('underscore', 'client');
+    api.use(['mizzao:user-status@0.6.4','brentjanderson:buzz@1.1.9'],both);
+    api.addFiles('collectionDefinitions.coffee');
+    api.addFiles('server/servercode.coffee');
+    api.addFiles('clientTemplates/chatPanel.html');
+
+    api.addFiles('clientTemplates/chatPanel.coffee');
+    api.addFiles('libFiles/profilePic.jpg');
+    api.addFiles('libFiles/sounds/beep.mp3');
+
+
+
 });
 
 Package.onTest(function(api) {

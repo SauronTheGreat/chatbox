@@ -1,0 +1,1 @@
+@messages = new Meteor.Collection("messages")
